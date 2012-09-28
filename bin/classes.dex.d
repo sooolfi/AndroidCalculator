@@ -1,0 +1,26 @@
+/home/guido/NetBeansProjects/TP3/bin/classes.dex : \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/R$string.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$10.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/R$layout.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/R.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$7.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$12.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$9.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$16.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$3.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$15.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$13.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$11.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/R$id.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$2.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$6.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$5.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$8.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$4.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/BuildConfig.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/calculateExpression.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/R$attr.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$1.class \
+/home/guido/NetBeansProjects/TP3/bin/classes/android/calculatorProject/cCalculator$14.class \
+/home/guido/android-sdk-linux/tools/support/annotations.jar \
