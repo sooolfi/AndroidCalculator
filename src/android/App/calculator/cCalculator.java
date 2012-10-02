@@ -72,13 +72,15 @@ public class cCalculator extends Activity
         switch(item.getItemId()){
         case R.id.cientifica:
             item.setChecked(true);
-            trigonometricTable.setVisibility(View.VISIBLE);
+            standarTable.setVisibility(View.GONE);
+            standarTable.setVisibility(View.VISIBLE);
+            trigonometricTable.setVisibility(View.VISIBLE);            
             return true;
        case R.id.estandar:
            item.setChecked(true);
            trigonometricTable.setVisibility(View.GONE);
-           standarTable.bringToFront();
-           
+           standarTable.setVisibility(View.GONE);
+           standarTable.setVisibility(View.VISIBLE);
            return true;
        case R.id.precUno:
            item.setChecked(true);
@@ -379,13 +381,17 @@ public class cCalculator extends Activity
        butIgual = (Button) findViewById(R.id.butIgual);
        butIgual.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
-                    if(!input.isEmpty()){
+                    if(!input.isEmpty() && input.length()>2){
   
                     if((input.charAt(0)=='x')&& (input.charAt(1)=='='))                   
                     try{
                     xValue = input.substring(2, input.length());
                     resultText.append("-----------------------");
                     resultText.append("\n");
+                    resultJep.parseExpression(xValue);
+                    Double val = resultJep.getValue();
+                    xValue=val.toString();
+                    resultJep.addVariable("x", val);        
                     resultText.append("x="+xValue);
                     resultText.append("\n");        
                     inputText.setText("");
@@ -398,8 +404,19 @@ public class cCalculator extends Activity
                     }
                     else   
                         if(!("".equals(input)))
-                        calculateOutput();    
-                }        }                        
+                        calculateOutput();
+                       
+                } else
+                
+                    if("x".equals(input)){
+                    resultText.append("-----------------------");   
+                    resultText.append("\n");        
+                    resultText.append("x="+xValue);
+                    resultText.append("\n");        
+                    inputText.setText("");
+                   
+                
+                        }}                        
         });
        
     }    
@@ -418,18 +435,8 @@ public class cCalculator extends Activity
             }
    
     private void calculateOutput() {       
-        //usamos libreria jep
-        
-        if(!("".equals(xValue))){
-        resultJep.parseExpression(xValue);
-        
-        resultJep.addVariable("x", resultJep.getValue());        
-        }
+        //usamos libreria jepLite
         resultJep.parseExpression(input);
-       
-        //Si esta en radianes lo dejo asi, sino 
-                
-                    
         double res = resultJep.getValue();
         String screenResutl;
         if(!Double.isNaN(res))
