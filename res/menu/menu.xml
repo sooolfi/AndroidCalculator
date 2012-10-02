@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">       
+        <item android:id="@+id/precision" android:title="Decimal Precision">
+            <menu>
+                 <group android:checkableBehavior="single">
+                    <item android:id="@+id/precUno" android:title="One"></item>
+                    <item android:id="@+id/precDos" android:title="Two" android:checked="true"></item>
+                    <item android:id="@+id/precTres" android:title="Three"></item>
+                    <item android:id="@+id/precCuatro" android:title="Four"></item>
+                    <item android:id="@+id/precCinco" android:title="Five"></item>
+                 </group>
+             </menu>  
+        </item>
+	<item android:id="@+id/mode" android:title="Mode">
+        <menu>
+                 <group android:checkableBehavior="single">
+                    <item android:id="@+id/cientifica" android:title="Cientific" ></item>
+                    <item android:id="@+id/estandar" android:title="Standar" android:checked="true"></item>
+                 </group>
+        </menu>  
+        </item>        
+        <item android:id="@+id/gradRadi" android:title="Degrees/Radians">
+        <menu>
+                 <group android:checkableBehavior="single">
+                    <item android:id="@+id/grados" android:title="Degrees"  ></item>
+                    <item android:id="@+id/radianes" android:title="Radians" android:checked="true"></item>
+                 </group>
+        </menu>            
+        </item>
+</menu>
+
+
