@@ -18,6 +18,7 @@
                     <item android:id="@+id/estandar" android:title="Standar" android:checked="true"></item>
                  </group>
         </menu>  
+        
         </item>        
         <item android:id="@+id/gradRadi" android:title="Degrees/Radians">
         <menu>

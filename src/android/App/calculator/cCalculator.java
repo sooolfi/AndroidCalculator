@@ -15,7 +15,7 @@ import org.nfunk.jep.JEP;
 public class cCalculator extends Activity
 {
     private String result,input,ans,xValue;
-    private int precision,radDeg; //radDeg = 1 radianes, =2 grados
+    private int precision,radDeg,mode; //radDeg = 1 radianes, =2 grados// mode =1 standar. 2=cientific
     private Button butErase;
     private Button butSiete,butOcho,butNueve,butDiv,butC,butRaiz,butN;
     private Button butCuatro,butCinco,butSeis,butPor,butPi,butElev,butAns;
@@ -26,23 +26,31 @@ public class cCalculator extends Activity
     private TableLayout trigonometricTable, standarTable;
     private JEP resultJep;
     
+    
+    
+
+    
+    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        
+        mode = 1;    
         precision =2;
         radDeg = 1;  
         result = "";
-        xValue = "";
+        xValue = "undefined";
         input = "";
-        ans = new String();
+        ans = "undefined";
+        
+              
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         addListenerOnButton();     
         inputText = (EditText) findViewById(R.id.inputText); 
         resultText = (EditText) findViewById(R.id.resultText);
         trigonometricTable = (TableLayout) findViewById(R.id.trigonometricTable);
-        trigonometricTable.setVisibility(View.GONE);
         standarTable = (TableLayout) findViewById(R.id.standarTable);
         //libreria para calcular resultados
         resultJep = new JEP();
@@ -56,6 +64,22 @@ public class cCalculator extends Activity
         resultJep.addFunction("acosG", new acosG());
         resultJep.addFunction("tanG", new tanG());
         resultJep.addFunction("atanG", new atanG());
+       
+            
+        if(mode == 1){
+           trigonometricTable.setVisibility(View.GONE);
+           standarTable.setVisibility(View.GONE);
+           standarTable.setVisibility(View.VISIBLE);
+           
+           
+        }
+        else
+            if(mode ==2){
+            standarTable.setVisibility(View.GONE);
+            standarTable.setVisibility(View.VISIBLE);
+            trigonometricTable.setVisibility(View.VISIBLE);             
+        }
+
     }
     
     
@@ -72,11 +96,13 @@ public class cCalculator extends Activity
         switch(item.getItemId()){
         case R.id.cientifica:
             item.setChecked(true);
+            mode =2;
             standarTable.setVisibility(View.GONE);
             standarTable.setVisibility(View.VISIBLE);
             trigonometricTable.setVisibility(View.VISIBLE);            
             return true;
        case R.id.estandar:
+           mode =1;
            item.setChecked(true);
            trigonometricTable.setVisibility(View.GONE);
            standarTable.setVisibility(View.GONE);
@@ -234,6 +260,7 @@ public class cCalculator extends Activity
        butAns = (Button) findViewById(R.id.butAns);
        butAns.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
+                    if(!ans.equals("undefined"))
                     input+=ans;
                     showInput();
                 }                                    
@@ -291,6 +318,13 @@ public class cCalculator extends Activity
        butPorcent.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
                     input+="%";
+                    showInput();
+                }                                    
+        });
+       butN = (Button) findViewById(R.id.butN);
+       butN.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    input+="*10^(";
                     showInput();
                 }                                    
         });
@@ -381,42 +415,35 @@ public class cCalculator extends Activity
        butIgual = (Button) findViewById(R.id.butIgual);
        butIgual.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
-                    if(!input.isEmpty() && input.length()>2){
-  
-                    if((input.charAt(0)=='x')&& (input.charAt(1)=='='))                   
-                    try{
-                    xValue = input.substring(2, input.length());
-                    resultText.append("-----------------------");
-                    resultText.append("\n");
-                    resultJep.parseExpression(xValue);
-                    Double val = resultJep.getValue();
-                    xValue=val.toString();
-                    resultJep.addVariable("x", val);        
-                    resultText.append("x="+xValue);
-                    resultText.append("\n");        
-                    inputText.setText("");
-                    input="";
-                    } catch (Exception ea ) {
-                        
-                    resultText.append("-----------------------");
-                    resultText.append("\n");
-                    resultText.append("...Syntax Error...");
-                    }
-                    else   
-                        if(!("".equals(input)))
-                        calculateOutput();
-                       
-                } else
-                
+                    
+                    if(input.contains("x=")){
+                        xValue = input.substring(2, input.length());
+                        resultText.append("-----------------------");
+                        resultText.append("\n");
+                        resultJep.parseExpression(xValue);
+                        Double val = resultJep.getValue();
+                        xValue=val.toString();
+                        resultJep.addVariable("x", val);        
+                        resultText.append("x="+xValue);
+                        resultText.append("\n");        
+                        inputText.setText("");
+                        input="";                        
+                    }else
+                                        
                     if("x".equals(input)){
                     resultText.append("-----------------------");   
                     resultText.append("\n");        
                     resultText.append("x="+xValue);
                     resultText.append("\n");        
                     inputText.setText("");
-                   
+                        }
+
+                        else {  
+                        if(!("".equals(input)))
+                        calculateOutput();
+                    }
                 
-                        }}                        
+                }                        
         });
        
     }    
@@ -434,7 +461,9 @@ public class cCalculator extends Activity
                inputText.setText(input);
             }
    
-    private void calculateOutput() {       
+    private void calculateOutput() {
+        
+        closeExpression();
         //usamos libreria jepLite
         resultJep.parseExpression(input);
         double res = resultJep.getValue();
@@ -448,7 +477,7 @@ public class cCalculator extends Activity
         resultText.append("\n");
         resultText.append("-----------------------");
         resultText.append("\n");
-        resultText.append(result);
+        resultText.append("= "+result);
         resultText.append("\n");        
         inputText.setText("");
         if(!("...Syntax Error...".equals(result)))
@@ -482,6 +511,26 @@ public class cCalculator extends Activity
                    result = round.format(resultado);
                    break;
            }
+    }
+
+    private void closeExpression() {
+        //metodo para cerrar los parentesis
+        int parIzq=0;
+        int parDer =0;
+        
+        for(int i=0;i<input.length();i++){
+            if(input.charAt(i)=='(')
+                parIzq++;
+            else
+                if(input.charAt(i)==')')
+                    parDer++;
+        }
+        
+         while(parIzq>parDer){
+             input+=")";
+             parDer++;
+           } 
+
     }
 
 

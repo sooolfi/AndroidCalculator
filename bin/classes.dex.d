@@ -13,7 +13,6 @@
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/R$drawable.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/R$menu.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/atanG.class \
-/home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/R$style.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/sinG.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/cCalculator$36.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/cCalculator$15.class \
@@ -31,6 +30,7 @@
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/cCalculator$28.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/cCalculator$6.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/cCalculator$33.class \
+/home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/cCalculator$38.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/cCalculator$5.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/cCalculator$8.class \
 /home/guido/NetBeansProjects/calculatorProject/bin/classes/android/App/calculator/asinG.class \

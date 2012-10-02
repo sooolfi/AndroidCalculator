@@ -75,7 +75,7 @@
             android:id="@+id/butN"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:text="n"
+            android:text="x10^"
             android:layout_weight="1"
             android:textColor="#FFFFFF"
             android:background="@drawable/blue_button"/>
