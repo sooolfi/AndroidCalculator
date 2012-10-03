@@ -511,6 +511,7 @@ public class cCalculator extends Activity
                    result = round.format(resultado);
                    break;
            }
+        result.replace(",", ".");
     }
 
     private void closeExpression() {
