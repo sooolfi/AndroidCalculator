@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
-import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import org.nfunk.jep.JEP;
 public class cCalculator extends Activity
 {
@@ -25,10 +25,6 @@ public class cCalculator extends Activity
     private EditText inputText,resultText;
     private TableLayout trigonometricTable, standarTable;
     private JEP resultJep;
-    
-    
-    
-
     
     
     /** Called when the activity is first created. */
@@ -466,19 +462,19 @@ public class cCalculator extends Activity
         closeExpression();
         //usamos libreria jepLite
         resultJep.parseExpression(input);
-        double res = resultJep.getValue();
-        String screenResutl;
+        Double res = resultJep.getValue();
         if(!Double.isNaN(res))
         roundResult(res);
         else
             result="...Syntax Error...";
+        
 
         resultText.append(input);     
         resultText.append("\n");
-        resultText.append("-----------------------");
-        resultText.append("\n");
         resultText.append("= "+result);
-        resultText.append("\n");        
+        resultText.append("\n"); 
+        resultText.append("-----------------------");
+        resultText.append("\n");               
         inputText.setText("");
         if(!("...Syntax Error...".equals(result)))
         ans = result;
@@ -488,30 +484,32 @@ public class cCalculator extends Activity
     
     
     private void roundResult(Double resultado) {
-       String res = resultado+"";
-       DecimalFormat round = new DecimalFormat("####.#");
+    //   String res = resultado+"";
+       //DecimalFormat round = new DecimalFormat("####.#");
+       NumberFormat round = NumberFormat.getInstance();
            switch (precision){
-               case 1:                   
+               case 1:            
+                   round.setMaximumFractionDigits(1);
                    result = round.format(resultado);
                    break;
                case 2:                   
-                   round = new DecimalFormat("####.##");
+                   round.setMaximumFractionDigits(2);
                    result = round.format(resultado);
                    break;
                case 3:                   
-                   round = new DecimalFormat("####.###");
+                   round.setMaximumFractionDigits(3);
                    result = round.format(resultado);
                    break;
                case 4:                   
-                   round = new DecimalFormat("####.####");
+                   round.setMaximumFractionDigits(4);
                    result = round.format(resultado);
                    break;
                case 5:                   
-                   round = new DecimalFormat("####.#####");
+                   round.setMaximumFractionDigits(5);
                    result = round.format(resultado);
                    break;
            }
-        result.replace(",", ".");
+        
     }
 
     private void closeExpression() {

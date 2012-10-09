@@ -19,11 +19,10 @@ public class calculateExpression {
            return  res+"";         
     }
     
-
     public float calculateSimpleExpression(String expresion) {
          int cantSignosMasMenos = 0;
          int indices[];
-        
+    
         for(int i=0;i<expresion.length();i++)
             if(expresion.charAt(i)== '+' || expresion.charAt(i)== '-' )
                 cantSignosMasMenos++;
@@ -71,7 +70,7 @@ public class calculateExpression {
        indices[cantSignos+1]=expresion.length(); 
        
        //primer valor    
-        float total = Float.parseFloat(expresion.substring(indices[0], indices[1])); 
+       float total = Float.parseFloat(expresion.substring(indices[0], indices[1])); 
        
        for(int k=1 ;k<cantSignos+1;k++){
            if(expresion.charAt(indices[k])=='*')   
