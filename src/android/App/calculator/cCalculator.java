@@ -413,15 +413,15 @@ public class cCalculator extends Activity
                 public void onClick(View v) {
                     
                     if(input.contains("x=")){
-                        xValue = input.substring(2, input.length());
-                        resultText.append("-----------------------");
-                        resultText.append("\n");
+                        xValue = input.substring(2, input.length());                      
                         resultJep.parseExpression(xValue);
                         Double val = resultJep.getValue();
                         xValue=val.toString();
                         resultJep.addVariable("x", val);        
                         resultText.append("x="+xValue);
-                        resultText.append("\n");        
+                        resultText.append("\n");  
+                        resultText.append("-----------------------");
+                        resultText.append("\n");
                         inputText.setText("");
                         input="";                        
                     }else
